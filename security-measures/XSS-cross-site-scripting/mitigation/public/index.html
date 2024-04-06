@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://unsecure.com/abc.js"></script>
+    <script nonce="randomKey">
+      console.log("My trusted code!");
+    </script>
+
+    <script>
+      console.log("My non-trusted code!");
+    </script>
+  </head>
+  <body>
+    <h1>Page for CORS demo!</h1>
+    <img src="http://unsecure.com/abc.png" />
+  </body>
+</html>

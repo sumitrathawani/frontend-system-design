@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<!-- 
+XSS- cross site scripting
+
+XSS is a client side attack where an attacker can inject malicious scripts into a website.
+The attacker can inject a script into a website that is visited by other users.
+The attacker can steal cookies, session tokens, or other sensitive information from the users.
+
+There are various types of XSS attacks:
+1. User session hijacking
+2. Unauthorized access
+3. Capture keystrokes
+4. Stealing critical information
+4. Phishing
+
+
+ -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>XSS-example-1</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <!-- Vulnerable code -->
+
+    <div>Hello, <span id="name"></span></div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get("name");
+      document.getElementById("name").innerText = username;
+    </script>
+  </body>
+</html>
